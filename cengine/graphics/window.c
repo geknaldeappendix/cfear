@@ -1,20 +1,21 @@
 #include "window.h"
-#include "SDL_render.h"
 
-int window_create() {
+struct Window window;
+
+int window_create(Function init, Function destroy, Function tick, Function render) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         LOG_ERROR("SDL could not initialize, SDL_Error: %s", SDL_GetError());
         return 1;
     }
 
-    SDL_Window* window = SDL_CreateWindow("title", 800, 600, 0);
+    window.sdl_window = SDL_CreateWindow("title", 800, 600, 0);
 
-    if (window == NULL) {
+    if (window.sdl_window == NULL) {
         LOG_ERROR("SDL window could not be created, SDL_Error: %s", SDL_GetError());
         return 1;
     }
 
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, NULL, SDL_RENDERER_ACCELERATED);   
+    SDL_Renderer* renderer = SDL_CreateRenderer(window.sdl_window, NULL, SDL_RENDERER_ACCELERATED);   
 
     if (renderer == NULL) {
         LOG_ERROR("SDL renderer could not be created, SDL_Error: %s", SDL_GetError());
@@ -23,6 +24,8 @@ int window_create() {
 
     SDL_Event event;
     int quit = 0;
+
+    init();
 
     while(!quit) {
         if (SDL_PollEvent(&event) > 0) {
@@ -36,11 +39,16 @@ int window_create() {
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
 
+        tick();
+        render();
+
         SDL_RenderPresent(renderer);
     }
 
+    destroy();
+
     SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
+    SDL_DestroyWindow(window.sdl_window);
     SDL_Quit();
 
     return 0;

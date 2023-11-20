@@ -2,6 +2,7 @@ project(cengine)
 
 add_library(${PROJECT_NAME} SHARED 
 graphics/window.c
+engine.c
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR})
