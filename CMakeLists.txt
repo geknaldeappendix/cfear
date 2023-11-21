@@ -11,4 +11,4 @@ add_subdirectory(vendor/glad)
 
 add_executable(cfear main.c)
 
-target_link_libraries(cfear clib cengine cgame SDL3::SDL3 glad)
+target_link_libraries(cfear clib cengine cgame SDL2::SDL2 glad)

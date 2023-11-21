@@ -1,7 +1,7 @@
 #ifndef __CFEAR_CENGINE_GRAPHICS_WINDOW_H_
 #define __CFEAR_CENGINE_GRAPHICS_WINDOW_H_
 
-#include "SDL3/SDL.h"
+#include "SDL2/SDL.h"
 #include "glad/gl.h"
 #include "clib/logger.h"
 

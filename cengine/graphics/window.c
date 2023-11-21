@@ -12,7 +12,7 @@ int window_create(Function init, Function destroy, Function tick, Function rende
         return 1;
     }
 
-    window.sdl_window = SDL_CreateWindow("title", 800, 600,
+    window.sdl_window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600,
      SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE
     );
 
@@ -30,7 +30,7 @@ int window_create(Function init, Function destroy, Function tick, Function rende
         SDL_GL_MakeCurrent(window.sdl_window, window.sdl_gl_context);
     }
 
-    if (!gladLoadGL(SDL_GL_GetProcAddress)) {
+    if (!gladLoadGL((GLADloadfunc)SDL_GL_GetProcAddress)) {
         LOG_ERROR("GLAD could not initialize");
         return 1;
     }
@@ -56,10 +56,10 @@ int window_create(Function init, Function destroy, Function tick, Function rende
     while(!quit) {
         if (SDL_PollEvent(&event) > 0) {
             switch(event.type) {
-                case SDL_EVENT_QUIT:
+                case SDL_QUIT:
                     quit = 1;
                     break;
-                case SDL_EVENT_WINDOW_RESIZED:
+                case SDL_WINDOWEVENT_RESIZED:
                     window_resize(event.window.data1, event.window.data2);
                     break;
             }
