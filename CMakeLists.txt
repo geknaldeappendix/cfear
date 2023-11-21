@@ -7,7 +7,8 @@ add_subdirectory(clib)
 add_subdirectory(cengine)
 add_subdirectory(cgame)
 add_subdirectory(vendor/SDL)
+add_subdirectory(vendor/glad)
 
 add_executable(cfear main.c)
 
-target_link_libraries(cfear clib cengine cgame SDL3::SDL3)
+target_link_libraries(cfear clib cengine cgame SDL3::SDL3 glad)

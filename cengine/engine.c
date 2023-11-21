@@ -16,6 +16,6 @@ void render() {
 
 }
 
-void engine_create() {
-    window_create(init, destroy, tick, render);
+int engine_create() {
+    return window_create(init, destroy, tick, render);
 }

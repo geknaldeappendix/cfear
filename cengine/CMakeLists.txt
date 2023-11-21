@@ -7,4 +7,4 @@ engine.c
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR})
 
-target_link_libraries(${PROJECT_NAME} PUBLIC clib SDL3::SDL3)
+target_link_libraries(${PROJECT_NAME} PUBLIC clib SDL3::SDL3 glad)

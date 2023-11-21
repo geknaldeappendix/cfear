@@ -4,5 +4,5 @@
 int main(void) {
     LOG_DEBUG("Hello world!");
 
-    game_create();
+    return game_create();
 } 

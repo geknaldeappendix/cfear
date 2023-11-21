@@ -3,6 +3,6 @@
 
 #include "graphics/window.h"
 
-void engine_create();
+int engine_create();
 
 #endif // __REPOS_CFEAR_CENGINE_ENGINE_H_
