@@ -6,6 +6,7 @@ graphics/shader.c
 graphics/renderer.c
 graphics/vao.c
 graphics/vbo.c
+graphics/obj/obj_parser.c
 engine.c
 )
 
