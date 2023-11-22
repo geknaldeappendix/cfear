@@ -4,6 +4,9 @@
 #include "glad/gl.h"
 #include "shader.h"
 
+#include "graphics/vbo.h" //TODO: temp
+#include "graphics/vao.h"
+
 enum Shaders {
     SHADER_DEFAULT = 0
 };

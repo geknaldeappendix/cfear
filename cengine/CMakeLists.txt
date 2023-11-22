@@ -4,6 +4,8 @@ add_library(${PROJECT_NAME} SHARED
 graphics/window.c
 graphics/shader.c
 graphics/renderer.c
+graphics/vao.c
+graphics/vbo.c
 engine.c
 )
 

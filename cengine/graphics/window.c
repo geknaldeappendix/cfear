@@ -40,8 +40,8 @@ int window_create(FunctionInit init, Function destroy, Function tick, Function r
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); //TODO: research why
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    // SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); //TODO: research why
+    // SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
     int width, height;
     SDL_GetWindowSize(window.sdl_window, &width, &height);
@@ -51,7 +51,7 @@ int window_create(FunctionInit init, Function destroy, Function tick, Function r
     int quit = 0;
 
     LOG_INFO("Successfully started window name=%s, width=%d, height=%d", SDL_GetWindowTitle(window.sdl_window), width, height);
-    if (!init()) {
+    if (init()) {
         LOG_ERROR("Error calling passed window init function please check logs");
         return 1;
     }
