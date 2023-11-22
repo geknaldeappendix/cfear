@@ -6,7 +6,7 @@ void window_resize(int width, int height) {
     glViewport(0, 0, width, height); 
 }
 
-int window_create(Function init, Function destroy, Function tick, Function render) {
+int window_create(FunctionInit init, Function destroy, Function tick, Function render) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         LOG_ERROR("SDL could not initialize, SDL_Error: %s", SDL_GetError());
         return 1;
@@ -51,7 +51,10 @@ int window_create(Function init, Function destroy, Function tick, Function rende
     int quit = 0;
 
     LOG_INFO("Successfully started window name=%s, width=%d, height=%d", SDL_GetWindowTitle(window.sdl_window), width, height);
-    init();
+    if (!init()) {
+        LOG_ERROR("Error calling passed window init function please check logs");
+        return 1;
+    }
 
     while(!quit) {
         if (SDL_PollEvent(&event) > 0) {
@@ -64,9 +67,6 @@ int window_create(Function init, Function destroy, Function tick, Function rende
                     break;
             }
         }
-
-        glClearColor(0.0f, 0.5f, 1.0f, 0.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
 
         tick();
         render();

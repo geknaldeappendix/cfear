@@ -2,6 +2,7 @@
 #define __REPOS_CFEAR_CENGINE_ENGINE_H_
 
 #include "graphics/window.h"
+#include "graphics/renderer.h"
 
 int engine_create();
 

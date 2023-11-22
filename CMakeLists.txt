@@ -9,6 +9,8 @@ add_subdirectory(cgame)
 add_subdirectory(vendor/SDL)
 add_subdirectory(vendor/glad)
 
+file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})
+
 add_executable(cfear main.c)
 
 target_link_libraries(cfear clib cengine cgame SDL2::SDL2 glad)

@@ -6,13 +6,14 @@
 #include "clib/logger.h"
 
 typedef void (*Function)();
+typedef int (*FunctionInit)();
 
 struct Window {
     SDL_Window* sdl_window;
     SDL_GLContext sdl_gl_context;
 };
 
-int window_create(Function init, Function destroy, Function tick, Function render);
+int window_create(FunctionInit init, Function destroy, Function tick, Function render);
 
 extern struct Window window;
 

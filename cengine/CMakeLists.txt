@@ -2,6 +2,8 @@ project(cengine)
 
 add_library(${PROJECT_NAME} SHARED 
 graphics/window.c
+graphics/shader.c
+graphics/renderer.c
 engine.c
 )
 
